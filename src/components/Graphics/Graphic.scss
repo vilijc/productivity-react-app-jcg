@@ -1,0 +1,25 @@
+.colors-preview-container {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    p {
+        padding: 0 5px;
+        margin: 0;
+        display: inline-block;
+        vertical-align: middle;
+    }
+    .color-preview {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        position: relative;
+        top: 5px;
+    }
+    .color-preview.green {
+        background-color: green;
+    }
+    .color-preview.cyan {
+        background-color: cyan;
+    }
+}

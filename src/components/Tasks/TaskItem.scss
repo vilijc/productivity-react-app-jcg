@@ -1,0 +1,38 @@
+.task-item {
+    border: solid 1px #1976d2;
+    border-radius: 5px;
+    padding: 5px;
+    margin: 10px 0px;
+    -webkit-box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0); 
+    box-shadow: 0px 10px 13px -7px #000000, 5px 5px 15px 5px rgba(0,0,0,0);
+
+    p {
+        padding: 0;
+        margin: 0;
+        font-weight: lighter;
+        .lbl-desc {
+            font-weight: bold;
+        }
+    }
+    p.title{
+        font-size: 18px;
+        font-weight: bold;
+        color: #1976d2;
+    }
+
+    .task-actions {
+        .action {
+            margin: 0 5px;
+        }
+        .action:hover {
+            color: #1976d2;
+        }
+        .action:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+.btn-add-container {
+    margin: 20px 0;
+}
