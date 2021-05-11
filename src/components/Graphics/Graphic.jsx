@@ -35,7 +35,7 @@ export default function Graphic() {
                 <Col md={6} xs={8}>
                     <VictoryPie 
                         data={data}
-                        style={{ labels: { fontSize: 8, fill: "black", padding: 0}}}
+                        style={{ labels: { fontSize: 8, fill: "black", padding: 12}}}
                         animate={{duration: 2000}}
                         colorScale={["cyan", "green", "orange", "red"]}
                     />

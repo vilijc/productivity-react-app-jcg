@@ -9,73 +9,659 @@ import { taskStatusesConst, taskStatusIdsConst } from '../../constants'
  */
 export const TaskContextProvider = props => {
 
-    /**
-     * Estado inicial
-     */
-    const initialState = {
-        taskList: [
-            {
-                id: 'ee65a44d-7213-491a-b9c6-e0792b8447e2', //Id
-                title: 'Crear proyecto react', //Titulo de la tarea
-                estimatedTime: '00:10:00', //Tiempo estimado hh:mm:ss
-                realTime: '00:10:00', //Tiempo real en finalizar la tarea hh:mm:ss
-                isStarted: false, //Bandera que indica si el temporizador esta iniciado
-                isPaused: false, //Bandera que indica si el temporizador esta pausado
-                status: taskStatusesConst.completed, //Estatus de la tarea
-                statusId: taskStatusIdsConst.completed, //Id de estatus
-                startDate: new Date('2021-05-04T12:00:00'), //Fecha de inicio de la tarea
-                endDate: new Date('2021-05-04T12:10:00'), //Fecha de finalización de la tarea
-            },
-            {
-                id: '5641b5ce-d757-4a5d-959c-9d17f379f1d6',
-                title: 'Crear layout',
-                estimatedTime: '00:01:00',
-                realTime: '00:00:30',
-                isStarted: true,
-                isPaused: false,
-                status: taskStatusesConst.in_progress,
-                statusId: taskStatusIdsConst.in_progress,
-                startDate: new Date('2021-05-04T12:30:00'),
-                endDate: new Date('2021-05-04T13:00:00'),
-            },
-        ].sort((a, b) => a.statusId > b.statusId ? 1 : -1)
+  /**
+   * Estado inicial
+   */
+  const initialState = {
+    taskList: [
+      {
+        id: 'ee65a44d-7213-491a-b9c6-e0792b8447e2', //Id
+        title: 'Crear proyecto react', //Titulo de la tarea
+        estimatedTime: '00:10:00', //Tiempo estimado hh:mm:ss
+        realTime: '00:10:00', //Tiempo real en finalizar la tarea hh:mm:ss
+        isStarted: false, //Bandera que indica si el temporizador esta iniciado
+        isPaused: false, //Bandera que indica si el temporizador esta pausado
+        status: taskStatusesConst.completed, //Estatus de la tarea
+        statusId: taskStatusIdsConst.completed, //Id de estatus
+        startDate: new Date('2021-05-04T12:00:00'), //Fecha de inicio de la tarea
+        endDate: new Date('2021-05-04T12:10:00'), //Fecha de finalización de la tarea
+      },
+      {
+        id: '5641b5ce-d757-4a5d-959c-9d17f379f1d6',
+        title: 'Eliminar archivos innecesarios',
+        estimatedTime: '00:10:00',
+        realTime: '00:00:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T12:30:00'),
+        endDate: new Date('2021-05-04T13:00:00'),
+      },
+      {
+        id: '95da6e17-73d4-4b0d-8162-4fb53b882e58',
+        title: 'Instalar dependencias iniciales',
+        estimatedTime: '00:15:00',
+        realTime: '00:00:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T13:00:00'),
+        endDate: new Date('2021-05-04T13:15:00'),
+      },
+      {
+        id: 'fcee8b4a-2a36-45fd-89aa-ee698c4de333',
+        title: 'Crear estructrura inicial del proyecto',
+        estimatedTime: '00:30:00',
+        realTime: '00:20:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T13:15:00'),
+        endDate: new Date('2021-05-04T13:35:00'),
+      },
+      {
+        id: '291ac0af-bb89-44ef-867c-c0abca2e2d67',
+        title: 'Crear layout',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T13:35:00'),
+        endDate: new Date('2021-05-04T14:05:00'),
+      },
+      {
+        id: '51d93bc5-cfcc-4054-94ec-8271ed2bf19d',
+        title: 'Crear container principal',
+        estimatedTime: '00:25:00',
+        realTime: '00:20:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T15:00:00'),
+        endDate: new Date('2021-05-04T15:20:00'),
+      },
+      {
+        id: '5cfd179e-a544-498e-b1cc-561ff478be0c',
+        title: 'Instalar dependencia para sass',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T15:20:00'),
+        endDate: new Date('2021-05-04T15:50:00'),
+      },
+      {
+        id: 'b3800175-5d73-4e5c-b37b-0be689e65138',
+        title: 'Agregar estilos a la pagina principal',
+        estimatedTime: '00:40:00',
+        realTime: '00:20:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T15:50:00'),
+        endDate: new Date('2021-05-04T16:10:00'),
+      },
+      {
+        id: 'cd736cb3-ffc4-40dc-b203-40796486e10a',
+        title: 'Crear contexto para tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-04T16:10:00'),
+        endDate: new Date('2021-05-04T16:40:00'),
+      },
+      {
+        id: '8324c744-cedf-403d-acdb-d8c48559001b',
+        title: 'Crear provider del contexto',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T15:00:00'),
+        endDate: new Date('2021-05-05T15:30:00'),
+      },
+      {
+        id: '2d559bf7-4109-491c-badf-04f1c8414f84',
+        title: 'Generar objeto taskItem',
+        estimatedTime: '00:30:00',
+        realTime: '00:20:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T15:30:00'),
+        endDate: new Date('2021-05-05T15:50:00'),
+      },
+      {
+        id: 'bfcf0bee-b758-4c69-98f3-c8462df924f2',
+        title: 'Crear dispacher para manejo de estado',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T15:50:00'),
+        endDate: new Date('2021-05-05T16:20:00'),
+      },
+      {
+        id: '3cc9f5a3-8313-44f6-8028-a3b5d77a5ec3',
+        title: 'Crear componente para listado de tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T16:20:00'),
+        endDate: new Date('2021-05-05T16:50:00'),
+      },
+      {
+        id: 'e7dfd0e7-11e0-4eca-aad1-4925d6aa7e67',
+        title: 'Prueba de iteración de listado de tareas',
+        estimatedTime: '00:40:00',
+        realTime: '00:40:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T16:50:00'),
+        endDate: new Date('2021-05-05T17:30:00'),
+      },
+      {
+        id: 'd4439f4c-0e95-4801-8b10-a5b4d0d637e1',
+        title: 'Crear constantes para estatus de las tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T17:30:00'),
+        endDate: new Date('2021-05-05T18:00:00'),
+      },
+      {
+        id: '80129209-df00-4702-882c-f30724536fc0',
+        title: 'Crear constantes de ids de estado',
+        estimatedTime: '00:250:00',
+        realTime: '00:20:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T18:00:00'),
+        endDate: new Date('2021-05-05T18:20:00'),
+      },
+      {
+        id: '8c1c03a6-3860-4115-aeb3-95b42ce3bed8',
+        title: 'Buscar dependencia para timer',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-05T18:20:00'),
+        endDate: new Date('2021-05-05T18:50:00'),
+      },
+      {
+        id: 'bd25d452-c56f-4bff-b75e-2244d21417d7',
+        title: 'Pruebas de concepto de timer',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '9f7cc45d-2274-40e8-8b98-0344d93157e7',
+        title: 'Pruebas de concepto de eventos de timer',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: 'b8732144-3e78-4165-86ce-aeb31cf6d463',
+        title: 'Agregar botones de accion de las tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '9ae2044c-a13a-45ff-80d8-ec230e470a89',
+        title: 'Crear template para modal',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '43626a2d-99a2-47b5-a112-ee424ab32146',
+        title: 'Pruebas de funcionemiento de modal',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '647e6dbb-5a86-493f-96c6-d2e98f425342',
+        title: 'HAcer dinamico el template de modal',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '382627f5-2bc6-4e7d-b6ac-016f297ae0b8',
+        title: 'Instalar dependencia para select',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '2aba012d-5dc5-4cb5-a72d-53264d2e09ed',
+        title: 'Validaciones de formatos HH:mm:ss',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-06T15:00:00'),
+        endDate: new Date('2021-05-06T15:20:00'),
+      },
+      {
+        id: '695cb7b9-4080-4f65-bbba-225a522a9c3f',
+        title: 'Crear funciones handle para formulario de registro',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '0cfe0e0f-84e7-4cc7-9743-e895744d3229',
+        title: 'Invocar dispatch para creación de tarea',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '910fe00c-72c0-4ade-90fa-c3bc256048d7',
+        title: 'Invocar dispatch para edición de tarea',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: 'e86599e6-4a49-47bc-8e7e-a3f67d717be1',
+        title: 'Estilos a tarjeta de tarea',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '086b42b0-d374-4c81-b9a6-b9a317928dbb',
+        title: 'Agregar botones para acciones del timer',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '6d79e45c-0bc6-4aeb-8b48-268ee3b9eea6',
+        title: 'Pruebas de acciones de timer',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '11a42ce0-520e-401b-8ec1-8445ad6a6eba',
+        title: 'Agregar filtros a seccion de tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: '294e9015-3f77-4a44-aadc-32d59d542033',
+        title: 'Crear función de filtrado por estatus',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-07T15:00:00'),
+        endDate: new Date('2021-05-07T15:20:00'),
+      },
+      {
+        id: 'e1c5ca53-0633-40cf-a614-a2bc7966ad94',
+        title: 'Crear función de filtrado por duración',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '2d53efb9-036f-4318-ba1f-04faac8f665b',
+        title: 'Validación de filtros',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '09fe520a-40ba-4d7e-ae99-f5ec5e6cca13',
+        title: 'Crear componente donde se visualizara gráfica',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'b85da3c5-3f60-43b5-8735-712f5038a501',
+        title: 'Buscar dependencias para graficas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'c739302b-393d-47bf-af52-5b31a248b1fc',
+        title: 'Buscando documentación de dependencia victory',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '731532ed-da0e-4279-9d01-227d690403c8',
+        title: 'Creación de prueba de concepto de gráfica',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '7a5bfc64-51d1-43ef-9d1e-1159a3b09a03',
+        title: 'Estilos para grafica de tareas',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: false,
+        isPaused: false,
+        status: taskStatusesConst.completed,
+        statusId: taskStatusIdsConst.completed,
+        startDate: new Date('2021-05-09T15:00:00'),
+        endDate: new Date('2021-05-09T15:20:00'),
+      },
+
+
+
+
+
+
+
+
+
+      //InProgress
+      {
+        id: '47c28578-53bc-41da-9d73-75eb0ca2e7e7',
+        title: 'Estudiar GraphQL',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '673722c5-dfaa-43eb-b932-0bd9f49ecc49',
+        title: 'Creación de API',
+        estimatedTime: '00:20:00',
+        realTime: '00:20:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '2a49c4c1-b0f9-4b08-b1c7-866bab1ae355',
+        title: 'Creación de loading',
+        estimatedTime: '00:40:00',
+        realTime: '00:40:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'fe9ebae7-f161-412a-b53b-3c1015123e48',
+        title: 'Cierre de sesión',
+        estimatedTime: '00:50:00',
+        realTime: '00:40:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'e95061fd-a2d0-485b-b207-45b04e29302a',
+        title: 'Creación de paginador',
+        estimatedTime: '01:00:00',
+        realTime: '00:40:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '7263f0e0-24a5-49c6-8044-2504852ffaea',
+        title: 'Ordenamiento por estatus',
+        estimatedTime: '00:30:00',
+        realTime: '00:30:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'bc056d4d-08a1-466b-9533-3d99b63d2342',
+        title: 'Agregar pruebas unitarias',
+        estimatedTime: '00:25:00',
+        realTime: '00:20:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: '0ea8f737-56c1-4d4e-a25d-886ff48acdbc',
+        title: 'Creación de cliente http',
+        estimatedTime: '00:20:00',
+        realTime: '00:20:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'f9d7a53c-e3ee-4ca3-8a4d-0e1b5f70492b',
+        title: 'Mejoras de estilos',
+        estimatedTime: '00:20:00',
+        realTime: '00:20:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      },
+      {
+        id: 'b462dc1f-9dfa-4227-9c14-f49dfc03505d',
+        title: 'Validar funcionalidad',
+        estimatedTime: '00:30:00',
+        realTime: '00:25:00',
+        isStarted: true,
+        isPaused: false,
+        status: taskStatusesConst.in_progress,
+        statusId: taskStatusIdsConst.in_progress,
+        startDate: new Date('2021-05-08T15:00:00'),
+        endDate: new Date('2021-05-08T15:20:00'),
+      }
+    ].sort((a, b) => a.statusId > b.statusId ? 1 : -1)
+  }
+
+  /**
+   * Acciones a realizar cuando se invoquen los dispatch
+   * @param {*} state 
+   * @param {*} action 
+   * @returns 
+   */
+  const reducer = (state, action) => {
+    switch (action.type) {
+      case "ADD_TASK":
+        return {
+          taskList: [...state.taskList, action.payload]
+        };
+      case "UPDATE_TASK":
+        const newList = state.taskList.map((item) => {
+          if (item.id === action.payload.id) {
+            return action.payload;
+          }
+          return item;
+        });
+        return {
+          taskList: newList
+        };
+      case "REMOVE_TASK":
+        return {
+          taskList: state.taskList.filter(s => s.id !== action.payload)
+        };
+      default:
+        throw new Error();
     }
+  };
+  const [state, dispatch] = useReducer(reducer, initialState);
 
-    /**
-     * Acciones a realizar cuando se invoquen los dispatch
-     * @param {*} state 
-     * @param {*} action 
-     * @returns 
-     */
-    const reducer = (state, action) => {
-        switch (action.type) {
-          case "ADD_TASK":
-            return {
-                taskList: [...state.taskList, action.payload]
-            };
-          case "UPDATE_TASK":
-            const newList = state.taskList.map((item) => {
-                if (item.id === action.payload.id) {
-                  return action.payload;
-                }
-                return item;
-            });
-            return {
-                taskList: newList
-            };
-          case "REMOVE_TASK":
-            return {
-                taskList: state.taskList.filter(s => s.id !== action.payload)
-            };
-          default:
-            throw new Error();
-        }
-      };
-    const [state, dispatch] = useReducer(reducer, initialState);
-
-    return (
-        <TaskContext.Provider value={[state, dispatch]}>
-            {props.children}
-        </TaskContext.Provider>
-    );
+  return (
+    <TaskContext.Provider value={[state, dispatch]}>
+      {props.children}
+    </TaskContext.Provider>
+  );
 }
